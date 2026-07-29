@@ -1,0 +1,64 @@
+.sidebar {
+  width: 250px;
+  background: #0a0a14;
+  border-right: 1px solid #1a1a2a;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sidebar__top { padding: 14px 12px; }
+
+.sidebar__new {
+  width: 100%;
+  padding: 8px 0;
+  border-radius: 8px;
+  background: #6d28d9;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.sidebar__search { padding: 0 12px 8px; }
+
+.sidebar__input {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #12121f;
+  border: 1px solid #2a2a3a;
+  color: #ccc;
+  font-size: 12px;
+  outline: none;
+}
+
+.sidebar__list { flex: 1; overflow-y: auto; padding: 0 8px; }
+
+.sidebar__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+
+.sidebar__item--active { background: #1a1a2e; }
+
+.sidebar__item-text { flex: 1; overflow: hidden; }
+
+.sidebar__item-title {
+  font-size: 13px;
+  color: #ccc;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}
+
+.sidebar__item-model { font-size: 10px; color: #555; }
+
+.sidebar__delete { color: #444; font-size: 16px; padding-left: 6px; cursor: pointer; }

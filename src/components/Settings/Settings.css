@@ -1,0 +1,43 @@
+.settings__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.settings__dialog {
+  width: 480px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #12121f;
+  border-radius: 12px;
+  border: 1px solid #2a2a3a;
+  padding: 24px;
+  color: #e0e0e0;
+}
+
+.settings__title { margin: 0 0 16px; color: #a78bfa; }
+
+.settings__field { display: block; margin-bottom: 12px; font-size: 13px; }
+
+.settings__select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #1a1a2a;
+  color: #e0e0e0;
+  border: 1px solid #3a3a4a;
+}
+
+.settings__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}

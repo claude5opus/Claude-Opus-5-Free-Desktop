@@ -1,0 +1,21 @@
+.markdown {
+  line-height: 1.7;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.markdown__code {
+  background: #0a0a14;
+  border-radius: 8px;
+  padding: 12px 14px;
+  overflow-x: auto;
+  font-size: 13px;
+  margin: 8px 0;
+  border: 1px solid #1a1a2a;
+}
+
+.markdown__code code {
+  font-family: 'Consolas', 'Monaco', monospace;
+  color: #c0c0e0;
+}

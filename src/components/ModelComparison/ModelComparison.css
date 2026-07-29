@@ -1,0 +1,74 @@
+.model-comparison {
+  border-bottom: 1px solid #2a2a3a;
+  padding: 10px 16px;
+}
+
+.model-comparison__row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.model-comparison__label {
+  font-size: 12px;
+  color: #888;
+}
+
+.model-btn {
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: none;
+  background: #1e1e2e;
+  color: #a0a0b0;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.model-btn--active {
+  background: #7c3aed;
+  color: #fff;
+  font-weight: 600;
+}
+
+.model-comparison__toggle {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid #3a3a4a;
+  background: transparent;
+  color: #8ab4f8;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.benchmark-table {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+
+.benchmark-table th {
+  padding: 4px 8px;
+  color: #888;
+  text-align: left;
+  border-bottom: 1px solid #2a2a3a;
+}
+
+.benchmark-table td {
+  padding: 4px 8px;
+  color: #999;
+  border-bottom: 1px solid #1a1a2a;
+}
+
+.benchmark-table__row--active td {
+  color: #ccc;
+}
+
+.model-comparison__note {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #666;
+}
