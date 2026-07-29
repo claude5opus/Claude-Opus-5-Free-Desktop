@@ -1,27 +1,22 @@
 import { useState } from 'react'
 import type { ClaudeSession } from '../types'
-import { STORAGE_KEYS } from '../config/constants'
 
-const SESSIONS_KEY = STORAGE_KEYS.sessions
+const SESSIONS_KEY = 'opus5_sessions'
 
 export function useSessions() {
   const [sessions, setSessions] = useState<ClaudeSession[]>(() => {
-    try {
-      const raw = localStorage.getItem(SESSIONS_KEY)
-      return raw ? JSON.parse(raw) : []
-    } catch { return [] }
+    try { return JSON.parse(localStorage.getItem(SESSIONS_KEY) ?? '[]') } catch { return [] }
   })
 
-  const persist = (updated: ClaudeSession[]) => {
-    setSessions(updated)
-    localStorage.setItem(SESSIONS_KEY, JSON.stringify(updated))
+  const persist = (s: ClaudeSession[]) => {
+    setSessions(s)
+    localStorage.setItem(SESSIONS_KEY, JSON.stringify(s))
   }
 
-  const addSession = (s: ClaudeSession) => persist([s, ...sessions])
-  const removeSession = (id: string) => persist(sessions.filter(s => s.id !== id))
-  const updateSession = (id: string, patch: Partial<ClaudeSession>) =>
-    persist(sessions.map(s => s.id === id ? { ...s, ...patch } : s))
-  const getActive = (id: string | null) => sessions.find(s => s.id === id) ?? null
+  const add    = (s: ClaudeSession)    => persist([s, ...sessions])
+  const remove = (id: string)          => persist(sessions.filter(s => s.id !== id))
+  const update = (id: string, p: Partial<ClaudeSession>) =>
+    persist(sessions.map(s => s.id === id ? { ...s, ...p } : s))
 
-  return { sessions, addSession, removeSession, updateSession, getActive }
+  return { sessions, add, remove, update }
 }

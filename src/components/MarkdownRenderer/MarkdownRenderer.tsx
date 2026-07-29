@@ -5,15 +5,11 @@ interface Props {
 export function MarkdownRenderer({ text }: Props) {
   const parts = text.split(/(```[\s\S]*?```)/g)
   return (
-    <div className="markdown">
+    <div className="md">
       {parts.map((part, i) => {
         if (part.startsWith('```')) {
           const inner = part.replace(/^```\w*\n?/, '').replace(/```$/, '')
-          return (
-            <pre key={i} className="markdown__code">
-              <code>{inner}</code>
-            </pre>
-          )
+          return <pre key={i}><code>{inner}</code></pre>
         }
         return <span key={i}>{part}</span>
       })}

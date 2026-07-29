@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import type { ClaudeMessage, ClaudeModel } from '../types'
+import type { ClaudeMessage, ClaudeModel } from '../src/types'
 
 export function useClaudeOpusChat(model: ClaudeModel = 'claude-opus-5') {
   const [messages, setMessages] = useState<ClaudeMessage[]>([])
@@ -9,7 +9,7 @@ export function useClaudeOpusChat(model: ClaudeModel = 'claude-opus-5') {
   const send = useCallback(async (content: string) => {
     if (rateLimited) return
     const msg: ClaudeMessage = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       role: 'user',
       content,
       timestamp: new Date(),
@@ -18,28 +18,26 @@ export function useClaudeOpusChat(model: ClaudeModel = 'claude-opus-5') {
     setLoading(true)
 
     try {
-      const res = await fetch('/api/claude/opus', {
+      const res = await fetch('/api/opus', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ model, messages: [...messages, msg] }),
       })
-
       if (res.status === 429) {
         setRateLimited(true)
         setMessages(prev => [...prev, {
-          id: Date.now().toString(),
-          role: 'assistant',
-          content: 'Opus 5 rate limit reached. Switch to Sonnet 5 for this response.',
-          model: 'claude-opus-5',
+          id: crypto.randomUUID(),
+          role: 'assistant' as const,
+          content: 'Claude Opus 5 rate limit reached. Switch to Sonnet 5 in the model picker for continued access.',
+          model: 'claude-opus-5' as ClaudeModel,
           timestamp: new Date(),
         }])
         return
       }
-
       const data = await res.json()
       setMessages(prev => [...prev, {
-        id: Date.now().toString(),
-        role: 'assistant',
+        id: crypto.randomUUID(),
+        role: 'assistant' as const,
         content: data.content,
         model,
         inputTokens: data.inputTokens,
@@ -51,7 +49,11 @@ export function useClaudeOpusChat(model: ClaudeModel = 'claude-opus-5') {
     }
   }, [messages, model, rateLimited])
 
-  const clear = () => { setMessages([]); setRateLimited(false) }
-
-  return { messages, loading, rateLimited, send, clear }
+  return {
+    messages,
+    loading,
+    rateLimited,
+    send,
+    clear: () => { setMessages([]); setRateLimited(false) },
+  }
 }
